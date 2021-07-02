@@ -233,15 +233,6 @@
 			path = SearchInfo;
 			sourceTree = "<group>";
 		};
-		1C0CF4951E82D449005ADDFA /* HistoriesViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1C0CF4961E82D466005ADDFA /* HistoriesViewController.h */,
-				1C0CF4971E82D466005ADDFA /* HistoriesViewController.m */,
-			);
-			path = HistoriesViewController;
-			sourceTree = "<group>";
-		};
 		1C1AD0261E49B79800544217 = {
 			isa = PBXGroup;
 			children = (
@@ -348,15 +339,6 @@
 			path = CheckPageViewController;
 			sourceTree = "<group>";
 		};
-		1C5BF263200CA3AE00FB260A /* DownloadedsViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1C5BF264200CA3AE00FB260A /* DownloadedsViewController.h */,
-				1C5BF265200CA3AE00FB260A /* DownloadedsViewController.m */,
-			);
-			path = DownloadedsViewController;
-			sourceTree = "<group>";
-		};
 		1C630F07200502870068879F /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,8 +389,6 @@
 				1C7CA72B1E49C10400D94CFB /* ListViewController */,
 				1CA192D21E926B3100D352B3 /* RelatedViewController */,
 				1C0867F81E5C8F2100E361B5 /* SearchViewController */,
-				1C0CF4951E82D449005ADDFA /* HistoriesViewController */,
-				1C5BF263200CA3AE00FB260A /* DownloadedsViewController */,
 				1C7ABF5F2021C71D006313C3 /* SettingViewController */,
 				1C0608401E53471100E6A285 /* GalleryViewController */,
 			);
@@ -448,9 +428,13 @@
 		1C7CA72B1E49C10400D94CFB /* ListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1C5BF264200CA3AE00FB260A /* DownloadedsViewController.h */,
+				1C5BF265200CA3AE00FB260A /* DownloadedsViewController.m */,
+				1C0CF4961E82D466005ADDFA /* HistoriesViewController.h */,
+				1C0CF4971E82D466005ADDFA /* HistoriesViewController.m */,
 				1C9294E61E4C4330001AB1CE /* ListViewController.h */,
-				1CAF38941E854B8500A4C0DD /* PrivateListViewController.h */,
 				1C9294E71E4C4330001AB1CE /* ListViewController.m */,
+				1CAF38941E854B8500A4C0DD /* PrivateListViewController.h */,
 			);
 			path = ListViewController;
 			sourceTree = "<group>";
@@ -759,7 +743,7 @@
 				TargetAttributes = {
 					1C1AD02E1E49B79800544217 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = XLP7NJ2T65;
+						DevelopmentTeam = RZ53TA8KW8;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
@@ -809,7 +793,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7de17834758164bee76de1104c48ccff26a7a1d7 84216198fa8eaf529539af1e16bcff531a45816a5469ff16948ba11469b70ebf";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7de17834758164bee76de1104c48ccff26a7a1d7 84216198fa8eaf529539af1e16bcff531a45816a5469ff16948ba11469b70ebf\n";
 		};
 		5F6B103CB5164C6D1B5F3CB2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1065,11 +1049,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20191225;
-				DEVELOPMENT_TEAM = XLP7NJ2T65;
+				DEVELOPMENT_TEAM = RZ53TA8KW8;
 				INFOPLIST_FILE = "Dai-Hentai/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.10;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "tw.daidouji.Dai-Hentai";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1090,11 +1074,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20191225;
-				DEVELOPMENT_TEAM = XLP7NJ2T65;
+				DEVELOPMENT_TEAM = RZ53TA8KW8;
 				INFOPLIST_FILE = "Dai-Hentai/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.10;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "tw.daidouji.Dai-Hentai";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
