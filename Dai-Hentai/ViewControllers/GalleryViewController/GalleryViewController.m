@@ -242,7 +242,11 @@
 
 - (void)deleteThis {
     __weak GalleryViewController *weakSelf = self;
-    [UIAlertController showAlertTitle:@"O3O" message:@"我們現在這部作品囉!" defaultOptions:@[ @"好 O3Ob" ] cancelOption:@"先不要好了 OwO\"" handler: ^(NSInteger optionIndex) {
+    [UIAlertController showAlertTitle:@"O3O"
+                              message:@"我们现在要删除这部作品咯!"
+                       defaultOptions:@[ @"好 O3Ob" ]
+                         cancelOption:@"先不要好了 OwO\""
+                              handler: ^(NSInteger optionIndex) {
         if (!weakSelf) {
             return;
         }

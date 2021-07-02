@@ -24,10 +24,10 @@
 
 - (void)displayCurrentScrollDirectionText {
     if (self.info.scrollDirection.integerValue == UICollectionViewScrollDirectionVertical) {
-        self.scrollDirectionLabel.text = @"上下捲動";
+        self.scrollDirectionLabel.text = @"上下滚动";
     }
     else {
-        self.scrollDirectionLabel.text = @"左右捲動";
+        self.scrollDirectionLabel.text = @"左右滚动";
     }
 }
 

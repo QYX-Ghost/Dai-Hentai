@@ -65,10 +65,6 @@
     }
 }
 
-- (void)onCellBeSelectedAction:(HentaiInfo *)info {
-    [self performSegueWithIdentifier:@"PushToGallery" sender:info];
-}
-
 - (void)initValues {
     [super initValues];
     self.isLoading = NO;

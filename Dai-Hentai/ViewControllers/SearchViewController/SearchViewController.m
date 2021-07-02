@@ -284,13 +284,18 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.languages = @{ @"chineseOnly": @"中文",
-                        @"originalOnly": @"原汁原味不翻譯" };
+    self.languages = @{
+        @"chineseOnly": @"中文",
+        @"originalOnly": @"原汁原味不翻译"
+    };
     
     @weakify(self);
     [self.languages.allKeys enumerateObjectsUsingBlock: ^(NSString *obj, NSUInteger idx, BOOL *stop) {
         @strongify(self);
-        [self.info addObserver:self forKeyPath:obj options:NSKeyValueObservingOptionNew context:nil];
+        [self.info addObserver:self
+                    forKeyPath:obj
+                       options:NSKeyValueObservingOptionNew
+                       context:nil];
     }];
     [self setupCategories];
 }

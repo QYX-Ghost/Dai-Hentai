@@ -24,22 +24,38 @@ typedef enum {
 + (NSDictionary<NSNumber *, NSDictionary *> *)statusInfos {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        objc_setAssociatedObject(self, _cmd, @{ @(HentaiParserStatusParseFail): @{ @"color": [UIColor redColor],
-                                                                                   @"list": @"解析失敗",
-                                                                                   @"api": @"不知道" },
-                                                @(HentaiParserStatusNetworkFail): @{ @"color": [UIColor redColor],
-                                                                                   @"list": @"網路錯誤",
-                                                                                   @"api": @"網路錯誤" },
-                                                @(HentaiParserStatusSuccess): @{ @"color": [UIColor greenColor],
-                                                                                 @"list": @"成功",
-                                                                                 @"api": @"成功" },
-                                                @(LocalStatusTypeInit): @{ @"color": [UIColor blackColor],
-                                                                           @"list": @"測試中...",
-                                                                           @"api": @"測試中..." },
-                                                @(LocalStatusTypeExNotLogin): @{ @"color": [UIColor redColor],
-                                                                               @"list": @"未登入 EX",
-                                                                               @"api": @"未登入 EX" }
-                                               }, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, _cmd, @{
+            @(HentaiParserStatusParseFail): @{
+                    @"color": [UIColor redColor],
+                    @"list": @"解析失败",
+                    @"api": @"不知道"
+            },
+            @(HentaiParserStatusNetworkFail): @{
+                    @"color": [UIColor redColor],
+                    @"list": @"网络错误",
+                    @"api": @"网络错误"
+            },
+            @(HentaiParserStatusSuccess): @{
+                    @"color": [UIColor greenColor],
+                    @"list": @"成功",
+                    @"api": @"成功"
+            },
+            @(LocalStatusTypeInit): @{
+                    @"color": [UIColor colorWithDynamicProvider:^UIColor * _Nonnull(UITraitCollection * _Nonnull traitCollection) {
+                        if (traitCollection.userInterfaceStyle == UIUserInterfaceStyleLight) {
+                            return [UIColor blackColor];
+                        } else {
+                            return [UIColor whiteColor];
+                        }
+                    }],
+                    @"list": @"测试中...",
+                    @"api": @"测试中..."
+            },
+            @(LocalStatusTypeExNotLogin): @{
+                    @"color": [UIColor redColor],
+                    @"list": @"未登录 EX",
+                    @"api": @"未登录 EX"
+            }}, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     });
     return objc_getAssociatedObject(self, _cmd);
 }

@@ -19,8 +19,8 @@
         return;
     }
     
-    self.historySizeLabel.text = @"計算中...";
-    self.downloadSizeLabel.text = @"計算中...";
+    self.historySizeLabel.text = @"计算中...";
+    self.downloadSizeLabel.text = @"计算中...";
     NSArray<HentaiInfo *> *hentaiInfos = [DBGallery all];
     
     @weakify(self);

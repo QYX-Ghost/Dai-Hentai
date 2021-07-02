@@ -37,15 +37,18 @@
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
     BOOL extraCell = self.galleries.count == 0;
     return self.galleries.count + extraCell;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.isLoading) {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:@"MessageCell" forIndexPath:indexPath];
+        return [collectionView dequeueReusableCellWithReuseIdentifier:@"MessageCell"
+                                                         forIndexPath:indexPath];
     }
     
     if (!self.isEndOfGalleries && indexPath.row + 20 >= self.galleries.count) {
@@ -53,13 +56,17 @@
     }
     
     if (self.galleries.count == 0) {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:@"MessageCell" forIndexPath:indexPath];
+        return [collectionView dequeueReusableCellWithReuseIdentifier:@"MessageCell"
+                                                         forIndexPath:indexPath];
     }
 
-    return [collectionView dequeueReusableCellWithReuseIdentifier:@"ListCell" forIndexPath:indexPath];
+    return [collectionView dequeueReusableCellWithReuseIdentifier:@"ListCell"
+                                                     forIndexPath:indexPath];
 }
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView
+       willDisplayCell:(UICollectionViewCell *)cell
+    forItemAtIndexPath:(NSIndexPath *)indexPath {
     if ([cell isKindOfClass:[ListCell class]]) {
         ListCell *listCell = (ListCell *)cell;
         HentaiInfo *info = self.galleries[indexPath.row];
@@ -76,7 +83,9 @@
                 listCell.progress.text = @"";
             }
         }];
-        [listCell.thumbImageView sd_setImageWithURL:[NSURL URLWithString:info.thumb] placeholderImage:nil options:SDWebImageHandleCookies];
+        [listCell.thumbImageView sd_setImageWithURL:[NSURL URLWithString:info.thumb]
+                                   placeholderImage:nil
+                                            options:SDWebImageHandleCookies];
     }
     else if ([cell isKindOfClass:[MessageCell class]]) {
         [self showMessageTo:(MessageCell *)cell onLoading:self.isLoading];
@@ -117,11 +126,11 @@
     cell.activityView.hidden = !isLoading;
     if (isLoading) {
         [cell.activityView startAnimating];
-        cell.messageLabel.text = @"列表載入中...";
+        cell.messageLabel.text = @"列表载入中...";
     }
     else {
         [cell.activityView stopAnimating];
-        cell.messageLabel.text = @"找不到相關作品呦";
+        cell.messageLabel.text = @"找不到相关作品哟";
     }
 }
 
@@ -161,7 +170,7 @@
     
     __weak ListViewController *weakSelf = self;
     NSMutableArray<NSDictionary<NSString *, void(^)(void)> *> *behaviors = [NSMutableArray array];
-    [behaviors addObject:@{ @"我要現在看": ^(void) {
+    [behaviors addObject:@{ @"我要现在看": ^(void) {
         if (!weakSelf) {
             return;
         }
@@ -170,20 +179,51 @@
     } }];
     
     if (![info isDownloaded]) {
-        [behaviors addObject:@{ @"我要下載": ^(void) {
-            if (!weakSelf) {
-                return;
+        [behaviors addObject:@{
+            @"我要下载": ^(void) {
+                if (!weakSelf) {
+                    return;
+                }
+                __strong ListViewController *strongSelf = weakSelf;
+                HentaiImagesManager *manager = [HentaiDownloadCenter manager:info andParser:strongSelf.parser];
+                [manager giveMeAll];
+                [manager fetch:nil];
+                [info latestPage];
+                [info moveToDownloaded];
             }
-            __strong ListViewController *strongSelf = weakSelf;
-            HentaiImagesManager *manager = [HentaiDownloadCenter manager:info andParser:strongSelf.parser];
-            [manager giveMeAll];
-            [manager fetch:nil];
-            [info latestPage];
-            [info moveToDownloaded];
-        } }];
+        }];
+    } else {
+        [behaviors addObject:@{
+            @"我要删除": ^(void) {
+                if (!weakSelf) {
+                    return;
+                }
+                __strong ListViewController *strongSelf = weakSelf;
+                [UIAlertController showAlertTitle:@"O3O"
+                                          message:@"我们现在要删除这部作品咯!"
+                                   defaultOptions:@[ @"好 O3Ob" ]
+                                     cancelOption:@"先不要好了 OwO\""
+                                          handler: ^(NSInteger optionIndex) {
+                    if (!weakSelf) {
+                        return;
+                    }
+                    
+                    if (optionIndex) {
+                        [HentaiDownloadCenter bye:info];
+                        
+                        [DBGallery deleteDownloaded:info
+                                            handler: ^{
+                            [[FilesManager documentFolder] rd:[info folder]];
+                        } onFinish: ^(BOOL successed) {
+                            [strongSelf helpToReloadList];
+                        }];
+                    }
+                }];
+            }
+        }];
     }
     
-    [behaviors addObject:@{ @"用相關字詞搜尋": ^(void) {
+    [behaviors addObject:@{ @"用相关字词搜索": ^(void) {
         if (!weakSelf) {
             return;
         }
@@ -204,7 +244,11 @@
         [options addObject:behaviors[index].allKeys.firstObject];
     }
     
-    [UIAlertController showAlertTitle:@"O3O" message:[NSString stringWithFormat:@"這部作品有 %@ 頁呦", info.filecount] defaultOptions:options cancelOption:@"都不要 O3O" handler: ^(NSInteger optionIndex) {
+    [UIAlertController showAlertTitle:@"O3O"
+                              message:[NSString stringWithFormat:@"这部作品有 %@ 页哟", info.filecount]
+                       defaultOptions:options
+                         cancelOption:@"都不要 O3O"
+                              handler: ^(NSInteger optionIndex) {
         if (!weakSelf) {
             return;
         }

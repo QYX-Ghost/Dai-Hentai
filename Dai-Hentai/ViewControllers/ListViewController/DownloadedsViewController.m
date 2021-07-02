@@ -50,11 +50,7 @@
 
 - (void)showMessageTo:(MessageCell *)cell onLoading:(BOOL)isLoading {
     cell.activityView.hidden = YES;
-    cell.messageLabel.text = @"你還沒有看過任何作品呦 O3O";
-}
-
-- (void)onCellBeSelectedAction:(HentaiInfo *)info {
-    [self performSegueWithIdentifier:@"PushToGallery" sender:info];
+    cell.messageLabel.text = @"你还没有看过任何作品哟 O3O";
 }
 
 - (void)initValues {
