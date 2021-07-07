@@ -75,8 +75,7 @@ typedef enum {
             __strong RelatedViewController *strongSelf = weakSelf;
             if (newValue.boolValue) {
                 [strongSelf.selectedWords addObject:word];
-            }
-            else {
+            } else {
                 [strongSelf.selectedWords removeObject:word];
             }
         }

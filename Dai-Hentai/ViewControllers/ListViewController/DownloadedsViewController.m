@@ -39,8 +39,7 @@
             [self.collectionView reloadData];
             self.pageIndex++;
             self.isEndOfGalleries = hentaiInfos.count < 40;
-        }
-        else {
+        } else {
             self.isEndOfGalleries = YES;
         }
         self.isLoading = NO;
@@ -50,7 +49,7 @@
 
 - (void)showMessageTo:(MessageCell *)cell onLoading:(BOOL)isLoading {
     cell.activityView.hidden = YES;
-    cell.messageLabel.text = @"你还没有看过任何作品哟 O3O";
+    cell.messageLabel.text = @"你还没有下载过任何作品哟 O3O";
 }
 
 - (void)initValues {

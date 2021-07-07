@@ -74,20 +74,20 @@
         listCell.category.text = info.category;
         listCell.category.textColor = [self categoryColor:info.category];
         listCell.rating.text = info.rating;
-        listCell.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f repeats:YES usingBlock: ^{
+        listCell.progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.1f
+                                                                 repeats:YES
+                                                              usingBlock: ^{
             NSInteger progress = [HentaiDownloadCenter downloadProgress:info] * 100;
             if (labs(progress) != 100) {
                 listCell.progress.text = [NSString stringWithFormat:@"DL: %@ %%", @(progress)];
-            }
-            else {
+            } else {
                 listCell.progress.text = @"";
             }
         }];
         [listCell.thumbImageView sd_setImageWithURL:[NSURL URLWithString:info.thumb]
-                                   placeholderImage:nil
+                                   placeholderImage:[UIImage imageNamed:@"placeholder"]
                                             options:SDWebImageHandleCookies];
-    }
-    else if ([cell isKindOfClass:[MessageCell class]]) {
+    } else if ([cell isKindOfClass:[MessageCell class]]) {
         [self showMessageTo:(MessageCell *)cell onLoading:self.isLoading];
     }
 }
@@ -127,8 +127,7 @@
     if (isLoading) {
         [cell.activityView startAnimating];
         cell.messageLabel.text = @"列表载入中...";
-    }
-    else {
+    } else {
         [cell.activityView stopAnimating];
         cell.messageLabel.text = @"找不到相关作品哟";
     }
@@ -154,8 +153,7 @@
                     [strongSelf.galleries addObjectsFromArray:infos];
                     strongSelf.pageIndex++;
                     strongSelf.isEndOfGalleries = infos.count == 0;
-                }
-                else {
+                } else {
                     strongSelf.isEndOfGalleries = YES;
                 }
                 strongSelf.isLoading = NO;
@@ -287,8 +285,7 @@
         if ([ExCookie isExist]) {
             self.navigationItem.leftBarButtonItem = nil;
             newParser = [HentaiParser parserType:HentaiParserTypeEx];
-        }
-        else {
+        } else {
             self.navigationItem.leftBarButtonItem = self.exLoginBarButtonItem;
             newParser = [HentaiParser parserType:HentaiParserTypeEh];
         }
@@ -319,15 +316,34 @@
             info.keyword = newKeyword;
         }
         [DBSearchSetting setInfo:info];
-        [self reloadGalleries];
-    }
-    else if ([segue.identifier isEqualToString:@"PopFromRelated"]) {
+        
+        if (self.tabBarController.selectedIndex != 0) {
+            // 不是列表分页 切换到列表分页
+            [self.tabBarController setSelectedIndex:0];
+            
+            UINavigationController *navc = self.tabBarController.viewControllers.firstObject;
+            ListViewController *vc = navc.viewControllers.firstObject;
+            [vc reloadGalleries];
+        } else {
+            [self reloadGalleries];
+        }
+    } else if ([segue.identifier isEqualToString:@"PopFromRelated"]) {
         RelatedViewController *relatedViewController = (RelatedViewController *)segue.sourceViewController;
         if (relatedViewController.selectedWords.count) {
             SearchInfo *searchInfo = [DBSearchSetting info];
             searchInfo.keyword = [relatedViewController.selectedWords componentsJoinedByString:@" "];
             [DBSearchSetting setInfo:searchInfo];
-            [self reloadGalleries];
+            
+            if (self.tabBarController.selectedIndex != 0) {
+                // 不是列表分页 切换到列表分页
+                [self.tabBarController setSelectedIndex:0];
+                
+                UINavigationController *navc = self.tabBarController.viewControllers.firstObject;
+                ListViewController *vc = navc.viewControllers.firstObject;
+                [vc reloadGalleries];
+            } else {
+                [self reloadGalleries];
+            }
         }
     }
 }
@@ -378,12 +394,10 @@
         galleryViewController.info = sender;
         galleryViewController.parser = self.parser;
         galleryViewController.hidesBottomBarWhenPushed = YES;
-    }
-    else if ([segue.identifier isEqualToString:@"PushToSearch"]) {
+    } else if ([segue.identifier isEqualToString:@"PushToSearch"]) {
         SearchViewController *searchViewController = (SearchViewController *)segue.destinationViewController;
         searchViewController.info = [DBSearchSetting info];
-    }
-    else if ([segue.identifier isEqualToString:@"PushToRelated"]) {
+    } else if ([segue.identifier isEqualToString:@"PushToRelated"]) {
         RelatedViewController *relatedViewController = (RelatedViewController *)segue.destinationViewController;
         relatedViewController.info = sender;
     }

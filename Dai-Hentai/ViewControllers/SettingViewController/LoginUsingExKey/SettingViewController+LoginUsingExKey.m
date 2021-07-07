@@ -12,7 +12,7 @@
 @implementation SettingViewController (LoginUsingExKey)
 
 - (void)onLoginUsingExKeyPress {
-    UIAlertController *loginCookieAlert = [UIAlertController alertControllerWithTitle:@"用Cookie登錄" message:@"请在此处输入Cookie" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *loginCookieAlert = [UIAlertController alertControllerWithTitle:@"用Cookie登录" message:@"请在此处输入Cookie" preferredStyle:UIAlertControllerStyleAlert];
     
     [loginCookieAlert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.delegate = self; // 此為填寫Cookie的地方

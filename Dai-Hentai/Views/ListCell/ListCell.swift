@@ -29,8 +29,8 @@ class ListCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        shadow(on: self, opacity: 0.5, radius: 2)
-        shadow(on: self.thumbImageView, opacity: 0.125, radius: 0.5)
+//        layer.borderWidth = 0.5
+//        layer.borderColor = UIColor.gray.cgColor
     }
 
     override func prepareForReuse() {

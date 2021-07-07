@@ -65,6 +65,8 @@
 		1CFE73131FFE32AE0018172F /* Dai-Hentai-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 1CFE73121FFE32AE0018172F /* Dai-Hentai-Bridging-Header.h */; };
 		1CFEE1E921CA76DD00D6010C /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFEE1E821CA76DD00D6010C /* GalleryCell.swift */; };
 		4DC6F4FDFFA849038487E4D8 /* libPods-Dai-Hentai.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88F4AEC071F70AFD3813A609 /* libPods-Dai-Hentai.a */; };
+		8B98F055268F270C00DEACA1 /* db.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B98F054268F270C00DEACA1 /* db.json */; };
+		8B98F05B2695BC9100DEACA1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B98F05A2695BC8F00DEACA1 /* NavigationController.swift */; };
 		E48D1A672357652E005F1439 /* SettingViewController+LoginUsingExKey.m in Sources */ = {isa = PBXBuildFile; fileRef = E48D1A662357652E005F1439 /* SettingViewController+LoginUsingExKey.m */; };
 		E4D2013923948ED200BB7908 /* GalleryCollectionViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2013823948ED200BB7908 /* GalleryCollectionViewHandler.swift */; };
 /* End PBXBuildFile section */
@@ -180,6 +182,8 @@
 		1CFE73121FFE32AE0018172F /* Dai-Hentai-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Dai-Hentai-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CFEE1E821CA76DD00D6010C /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		88F4AEC071F70AFD3813A609 /* libPods-Dai-Hentai.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Dai-Hentai.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B98F054268F270C00DEACA1 /* db.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = db.json; sourceTree = "<group>"; };
+		8B98F05A2695BC8F00DEACA1 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		E48D1A662357652E005F1439 /* SettingViewController+LoginUsingExKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SettingViewController+LoginUsingExKey.m"; sourceTree = "<group>"; };
 		E48D1A6823576554005F1439 /* SettingViewController+LoginUsingExKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SettingViewController+LoginUsingExKey.h"; sourceTree = "<group>"; };
 		E4D2013823948ED200BB7908 /* GalleryCollectionViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewHandler.swift; sourceTree = "<group>"; };
@@ -368,14 +372,14 @@
 		1C7ABF5F2021C71D006313C3 /* SettingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				1C7ABF602021C73F006313C3 /* SettingViewController.h */,
-				1CE09D332055777D0064D54B /* PrivateSettingViewController.h */,
-				1C7ABF612021C73F006313C3 /* SettingViewController.m */,
 				1CE09D3E20557C410064D54B /* ListAndAPIStatus */,
-				E48D1A6323576286005F1439 /* LoginUsingExKey */,
-				1CE09D3A20557B8C0064D54B /* SizeCalculator */,
-				1CE09D42205587CE0064D54B /* ScrollDirection */,
 				1CE09D4620558B640064D54B /* Lock */,
+				E48D1A6323576286005F1439 /* LoginUsingExKey */,
+				1CE09D332055777D0064D54B /* PrivateSettingViewController.h */,
+				1CE09D42205587CE0064D54B /* ScrollDirection */,
+				1C7ABF602021C73F006313C3 /* SettingViewController.h */,
+				1C7ABF612021C73F006313C3 /* SettingViewController.m */,
+				1CE09D3A20557B8C0064D54B /* SizeCalculator */,
 			);
 			path = SettingViewController;
 			sourceTree = "<group>";
@@ -383,6 +387,7 @@
 		1C7CA7281E49B95200D94CFB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B98F0592695BC6300DEACA1 /* NavigationController */,
 				1C630F07200502870068879F /* TabBarController */,
 				1CFE730C1FFE2A720018172F /* LoginViewController */,
 				1C5203A620543005000B6F45 /* CheckPageViewController */,
@@ -659,6 +664,7 @@
 		1CEE146E2056D819005983B0 /* Translator */ = {
 			isa = PBXGroup;
 			children = (
+				8B98F054268F270C00DEACA1 /* db.json */,
 				1CEE146F2056D834005983B0 /* Translator.h */,
 				1CEE14702056D834005983B0 /* Translator.m */,
 				1CEE14722056D84E005983B0 /* translator.json */,
@@ -689,6 +695,14 @@
 				1A6E9F07B9A9588FE4ECFCA8 /* Pods-Dai-Hentai.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B98F0592695BC6300DEACA1 /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				8B98F05A2695BC8F00DEACA1 /* NavigationController.swift */,
+			);
+			path = NavigationController;
 			sourceTree = "<group>";
 		};
 		C560C138EFC548CADF211306 /* Frameworks */ = {
@@ -775,6 +789,7 @@
 				1C1AD0421E49B79800544217 /* LaunchScreen.storyboard in Resources */,
 				1CEE14732056D84E005983B0 /* translator.json in Resources */,
 				1C1AD03F1E49B79800544217 /* Assets.xcassets in Resources */,
+				8B98F055268F270C00DEACA1 /* db.json in Resources */,
 				1C1AD03D1E49B79800544217 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,6 +898,7 @@
 				1C0608431E53473500E6A285 /* GalleryViewController.m in Sources */,
 				1C4D8B2D1E86201100113D0E /* UIAlertController+Block.m in Sources */,
 				1CEC12C11E500E9A00F3E3C4 /* DaiStoragePropertiesInObject.m in Sources */,
+				8B98F05B2695BC9100DEACA1 /* NavigationController.swift in Sources */,
 				1C4243ED21A450A800A2661A /* AppDelegate.swift in Sources */,
 				1CE09D45205587E50064D54B /* SettingViewController+ScrollDirection.m in Sources */,
 				1CE09D3D20557B8C0064D54B /* SettingViewController+SizeCalculator.m in Sources */,

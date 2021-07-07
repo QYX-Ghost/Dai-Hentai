@@ -66,8 +66,7 @@ typedef enum {
     CheckPageViewController *checkViewController;
     if ([reuseIdentifier isEqualToString:@"EhListCheckCell"]) {
         checkViewController = [[CheckPageViewController alloc] initWithUrlString:@"https://e-hentai.org/"];
-    }
-    else {
+    } else {
         checkViewController = [[CheckPageViewController alloc] initWithUrlString:@"https://exhentai.org/"];
     }
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:checkViewController];
@@ -91,9 +90,8 @@ typedef enum {
             // 如果沒有 cookies, 則直接設定字樣
             if (![ExCookie isExist]) {
                 [self localStatus:LocalStatusTypeExNotLogin listLabel:self.exListCheckLabel apiLabel:self.exAPICheckLabel];
-            }
-            // 測試 ex 是否正常
-            else {
+            } else {
+                // 測試 ex 是否正常
                 [self statusCheck:HentaiParserTypeEx listLabel:self.exListCheckLabel apiLabel:self.exAPICheckLabel];
             }
             [self.statusCheckLock unlock];

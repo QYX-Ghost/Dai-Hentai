@@ -13,16 +13,14 @@ class MessageCell: UICollectionViewCell {
     // MARK: Property
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var placeholderView: UIImageView!
     
     // MARK: Life Cycle
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        layer.masksToBounds = false
-        layer.shadowOpacity = 0.5
-        layer.shadowRadius = 2
-        layer.shadowOffset = .zero
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+//        layer.borderWidth = 0.5
+//        layer.borderColor = UIColor.gray.cgColor
     }
     
 }

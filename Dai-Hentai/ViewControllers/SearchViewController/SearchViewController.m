@@ -46,22 +46,22 @@ typedef enum {
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0:
-            return @"手動輸入關鍵字";
+            return @"手动输入关键字";
             
         case 1:
-            return @"只搜尋固定語言";
+            return @"只搜索固定语言";
             
         case 2:
-            return @"從近期標題選取";
+            return @"从近期标题选取";
             
         case 3:
-            return @"從近期 Tag 選取";
+            return @"从近期 Tag 选取";
             
         case 4:
-            return @"評分要求";
+            return @"评分要求";
             
         default:
-            return @"作品類別";
+            return @"作品类别";
     }
 }
 
@@ -143,7 +143,6 @@ typedef enum {
     
     // 利用近期 10 部作品來做統計
     for (HentaiInfo *info in self.recentHentaiInfos) {
-        
         NSMutableArray<NSString *> *allWords = [NSMutableArray array];
         switch (type) {
             // tag 的部分
@@ -152,13 +151,11 @@ typedef enum {
                 break;
             
             // 標題的部分, 如果有日文則用日文的, 反之才用一般的
-            case RecentHintTypeTitle:
-            {
+            case RecentHintTypeTitle: {
                 NSArray<NSString *> *titles = [info jpnTitleSplit];
                 if (titles.count) {
                     [allWords addObjectsFromArray:titles];
-                }
-                else {
+                } else {
                     [allWords addObjectsFromArray:[info engTitleSplit]];
                 }
                 break;
@@ -177,7 +174,7 @@ typedef enum {
         }
     }
     
-    NSArray<NSString *> *ignoreWords = @[ @"chinese", @"translated", @"中国翻訳" ];
+    NSArray<NSString *> *ignoreWords = @[ @"chinese", @"translated", @"中国翻译" ];
     [recentKeywords removeObjectsForKeys:ignoreWords];
     
     // 依照出現的次數多 -> 寡排序
@@ -209,14 +206,14 @@ typedef enum {
     
     NSMutableArray<SearchItem *> *titleHints = [NSMutableArray array];
     NSArray *recentTitles = [self recentTitles];
-    for (NSInteger index = 0; index < MIN(recentTitles.count, 5); index++) {
+    for (NSInteger index = 0; index < MIN(recentTitles.count, 20); index++) {
         [titleHints addObject:[SearchItem itemWith:recentTitles[index] getter:@"hints"]];
     }
     [self.allItems addObject:titleHints];
     
     NSMutableArray<SearchItem *> *tagHints = [NSMutableArray array];
     NSArray *recentTags = [self recentTags];
-    for (NSInteger index = 0; index < MIN(recentTags.count, 5); index++) {
+    for (NSInteger index = 0; index < MIN(recentTags.count, 20); index++) {
         [tagHints addObject:[SearchItem itemWith:recentTags[index] getter:@"hints"]];
     }
     [self.allItems addObject:tagHints];
@@ -290,7 +287,9 @@ typedef enum {
     };
     
     @weakify(self);
-    [self.languages.allKeys enumerateObjectsUsingBlock: ^(NSString *obj, NSUInteger idx, BOOL *stop) {
+    [self.languages.allKeys enumerateObjectsUsingBlock: ^(NSString *obj,
+                                                          NSUInteger idx,
+                                                          BOOL *stop) {
         @strongify(self);
         [self.info addObserver:self
                     forKeyPath:obj
@@ -303,9 +302,12 @@ typedef enum {
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     @weakify(self);
-    [self.languages.allKeys enumerateObjectsUsingBlock: ^(NSString *obj, NSUInteger idx, BOOL *stop) {
+    [self.languages.allKeys enumerateObjectsUsingBlock: ^(NSString *obj,
+                                                          NSUInteger idx,
+                                                          BOOL *stop) {
         @strongify(self);
-        [self.info removeObserver:self forKeyPath:obj];
+        [self.info removeObserver:self
+                       forKeyPath:obj];
     }];
 }
 

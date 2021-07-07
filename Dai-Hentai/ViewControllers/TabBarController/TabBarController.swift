@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         self.delegate = self
-        var titles = [ "列表", "歷史", "下載", "設定" ]
+        var titles = [ "列表", "历史", "下载", "设置" ]
         let selector = Selector(("setText:"))
         for view in tabBar.subviews {
             if
