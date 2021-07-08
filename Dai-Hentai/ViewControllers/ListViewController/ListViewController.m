@@ -14,6 +14,8 @@
 #import "Dai_Hentai-Swift.h"
 #import "NSTimer+Block.h"
 #import "HentaiDownloadCenter.h"
+#import "UIImage+YYWebImage.h"
+#import "DBUserPreference.h"
 
 #define color(r, g, b) [UIColor colorWithRed:(CGFloat)r / 255.0f green:(CGFloat)g / 255.0f blue:(CGFloat)b / 255.0f alpha:1.0f]
 
@@ -84,9 +86,24 @@
                 listCell.progress.text = @"";
             }
         }];
+        
+        __weak ListCell *weakListCell = listCell;
         [listCell.thumbImageView sd_setImageWithURL:[NSURL URLWithString:info.thumb]
                                    placeholderImage:[UIImage imageNamed:@"placeholder"]
-                                            options:SDWebImageHandleCookies];
+                                            options:SDWebImageHandleCookies
+                                          completed:^(UIImage * _Nullable image,
+                                                      NSError * _Nullable error,
+                                                      SDImageCacheType cacheType,
+                                                      NSURL * _Nullable imageURL) {
+            if (image && DBUserPreference.info.blurCover.boolValue) {
+                UIImage *blurImage = [image yy_imageByBlurRadius:25
+                                                       tintColor:nil
+                                                        tintMode:kCGBlendModeNormal
+                                                      saturation:1
+                                                       maskImage:nil];
+                weakListCell.thumbImageView.image = blurImage;
+            }
+        }];
     } else if ([cell isKindOfClass:[MessageCell class]]) {
         [self showMessageTo:(MessageCell *)cell onLoading:self.isLoading];
     }
@@ -397,7 +414,7 @@
         self.navigationItem.leftBarButtonItem = nil;
     }
     
-    [self.collectionView.visibleCells makeObjectsPerformSelector:@selector(layoutSubviews)];
+    [self.collectionView reloadData];
 }
 
 - (void)viewWillLayoutSubviews {

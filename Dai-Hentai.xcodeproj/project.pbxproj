@@ -69,6 +69,7 @@
 		8B98F05B2695BC9100DEACA1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B98F05A2695BC8F00DEACA1 /* NavigationController.swift */; };
 		8B98F05E2696A65C00DEACA1 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B98F05D2696A65C00DEACA1 /* AuthenticationServices.framework */; };
 		8B98F0692696B1A600DEACA1 /* SettingViewController+BlurCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B98F0682696B1A600DEACA1 /* SettingViewController+BlurCover.m */; };
+		8B98F0702696EAC200DEACA1 /* UIImage+YYWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B98F06F2696EAC200DEACA1 /* UIImage+YYWebImage.m */; };
 		E48D1A672357652E005F1439 /* SettingViewController+LoginUsingExKey.m in Sources */ = {isa = PBXBuildFile; fileRef = E48D1A662357652E005F1439 /* SettingViewController+LoginUsingExKey.m */; };
 		E4D2013923948ED200BB7908 /* GalleryCollectionViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2013823948ED200BB7908 /* GalleryCollectionViewHandler.swift */; };
 /* End PBXBuildFile section */
@@ -190,6 +191,8 @@
 		8B98F05D2696A65C00DEACA1 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		8B98F0672696B1A600DEACA1 /* SettingViewController+BlurCover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SettingViewController+BlurCover.h"; sourceTree = "<group>"; };
 		8B98F0682696B1A600DEACA1 /* SettingViewController+BlurCover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SettingViewController+BlurCover.m"; sourceTree = "<group>"; };
+		8B98F06E2696EAC200DEACA1 /* UIImage+YYWebImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+YYWebImage.h"; sourceTree = "<group>"; };
+		8B98F06F2696EAC200DEACA1 /* UIImage+YYWebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YYWebImage.m"; sourceTree = "<group>"; };
 		E48D1A662357652E005F1439 /* SettingViewController+LoginUsingExKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SettingViewController+LoginUsingExKey.m"; sourceTree = "<group>"; };
 		E48D1A6823576554005F1439 /* SettingViewController+LoginUsingExKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SettingViewController+LoginUsingExKey.h"; sourceTree = "<group>"; };
 		E4D2013823948ED200BB7908 /* GalleryCollectionViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewHandler.swift; sourceTree = "<group>"; };
@@ -510,6 +513,7 @@
 		1CAF38951E85623800A4C0DD /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				8B98F06D2696EAAE00DEACA1 /* UIImage */,
 				1CD02DFA200C747D00B3F717 /* CBLDatabase */,
 				1C4D8B2A1E861FF900113D0E /* UIAlertController */,
 				1C4D8B261E861B2100113D0E /* NSTimer */,
@@ -723,6 +727,15 @@
 			path = BlurCover;
 			sourceTree = "<group>";
 		};
+		8B98F06D2696EAAE00DEACA1 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				8B98F06E2696EAC200DEACA1 /* UIImage+YYWebImage.h */,
+				8B98F06F2696EAC200DEACA1 /* UIImage+YYWebImage.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
 		C560C138EFC548CADF211306 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,6 +885,7 @@
 				1C0608431E53473500E6A285 /* GalleryViewController.m in Sources */,
 				1C4D8B2D1E86201100113D0E /* UIAlertController+Block.m in Sources */,
 				1CEC12C11E500E9A00F3E3C4 /* DaiStoragePropertiesInObject.m in Sources */,
+				8B98F0702696EAC200DEACA1 /* UIImage+YYWebImage.m in Sources */,
 				8B98F05B2695BC9100DEACA1 /* NavigationController.swift in Sources */,
 				1C4243ED21A450A800A2661A /* AppDelegate.swift in Sources */,
 				1CE09D45205587E50064D54B /* SettingViewController+ScrollDirection.m in Sources */,

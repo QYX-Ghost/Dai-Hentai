@@ -13,7 +13,6 @@ class ListCell: UICollectionViewCell {
     // MARK: - Property
     // UI
     @IBOutlet weak var thumbImageView: UIImageView!
-    @IBOutlet weak var blurCoverView: UIVisualEffectView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var category: UILabel!
     @IBOutlet weak var rating: UILabel!
@@ -29,14 +28,6 @@ class ListCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        if (DBUserPreference.info().blurCover?.boolValue ?? false) {
-            // 模糊封面
-            blurCoverView.isHidden = false
-        } else {
-            // 不模糊封面
-            blurCoverView.isHidden = true
-        }
     }
 
     override func prepareForReuse() {
