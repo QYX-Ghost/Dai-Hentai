@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        self.removeLaunchScreenCacheIfNeeded()
         
         return true
     }
@@ -97,6 +98,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.effectView.removeFromSuperview()
         }
 
+    }
+    
+    func removeLaunchScreenCacheIfNeeded() {
+        let filePath = NSHomeDirectory() + "/Library/SplashBoard"
+        if FileManager.default.fileExists(atPath: filePath) {
+            try! FileManager.default.removeItem(atPath: filePath)
+        }
     }
 }
 

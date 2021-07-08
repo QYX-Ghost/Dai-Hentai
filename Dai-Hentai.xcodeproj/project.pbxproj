@@ -15,7 +15,6 @@
 		1C1AD0341E49B79800544217 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1AD0331E49B79800544217 /* main.m */; };
 		1C1AD03D1E49B79800544217 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1AD03B1E49B79800544217 /* Main.storyboard */; };
 		1C1AD03F1E49B79800544217 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C1AD03E1E49B79800544217 /* Assets.xcassets */; };
-		1C1AD0421E49B79800544217 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C1AD0401E49B79800544217 /* LaunchScreen.storyboard */; };
 		1C33D10B1E5F34BC00F0EB12 /* SearchKeywordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C33D1091E5F34BC00F0EB12 /* SearchKeywordCell.m */; };
 		1C33D10E1E5F35A600F0EB12 /* SearchRatingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C33D10D1E5F35A600F0EB12 /* SearchRatingCell.m */; };
 		1C33D1111E5F391A00F0EB12 /* SearchCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C33D1101E5F391A00F0EB12 /* SearchCategoryCell.m */; };
@@ -70,6 +69,8 @@
 		8B98F05E2696A65C00DEACA1 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B98F05D2696A65C00DEACA1 /* AuthenticationServices.framework */; };
 		8B98F0692696B1A600DEACA1 /* SettingViewController+BlurCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B98F0682696B1A600DEACA1 /* SettingViewController+BlurCover.m */; };
 		8B98F0702696EAC200DEACA1 /* UIImage+YYWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B98F06F2696EAC200DEACA1 /* UIImage+YYWebImage.m */; };
+		8B98F0722696F17900DEACA1 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B98F0712696F17900DEACA1 /* Launch Screen.storyboard */; };
+		8B98F0762696F4BB00DEACA1 /* launch_.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98F0752696F4BB00DEACA1 /* launch_.png */; };
 		E48D1A672357652E005F1439 /* SettingViewController+LoginUsingExKey.m in Sources */ = {isa = PBXBuildFile; fileRef = E48D1A662357652E005F1439 /* SettingViewController+LoginUsingExKey.m */; };
 		E4D2013923948ED200BB7908 /* GalleryCollectionViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D2013823948ED200BB7908 /* GalleryCollectionViewHandler.swift */; };
 /* End PBXBuildFile section */
@@ -91,7 +92,6 @@
 		1C1AD0331E49B79800544217 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1C1AD03C1E49B79800544217 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C1AD03E1E49B79800544217 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1C1AD0411E49B79800544217 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C1AD0431E49B79800544217 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C33D1081E5F34BC00F0EB12 /* SearchKeywordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchKeywordCell.h; sourceTree = "<group>"; };
 		1C33D1091E5F34BC00F0EB12 /* SearchKeywordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchKeywordCell.m; sourceTree = "<group>"; };
@@ -193,6 +193,8 @@
 		8B98F0682696B1A600DEACA1 /* SettingViewController+BlurCover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SettingViewController+BlurCover.m"; sourceTree = "<group>"; };
 		8B98F06E2696EAC200DEACA1 /* UIImage+YYWebImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+YYWebImage.h"; sourceTree = "<group>"; };
 		8B98F06F2696EAC200DEACA1 /* UIImage+YYWebImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YYWebImage.m"; sourceTree = "<group>"; };
+		8B98F0712696F17900DEACA1 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		8B98F0752696F4BB00DEACA1 /* launch_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_.png; sourceTree = "<group>"; };
 		E48D1A662357652E005F1439 /* SettingViewController+LoginUsingExKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SettingViewController+LoginUsingExKey.m"; sourceTree = "<group>"; };
 		E48D1A6823576554005F1439 /* SettingViewController+LoginUsingExKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SettingViewController+LoginUsingExKey.h"; sourceTree = "<group>"; };
 		E4D2013823948ED200BB7908 /* GalleryCollectionViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewHandler.swift; sourceTree = "<group>"; };
@@ -275,7 +277,8 @@
 				1C4243EC21A450A800A2661A /* AppDelegate.swift */,
 				1C1AD03B1E49B79800544217 /* Main.storyboard */,
 				1C1AD03E1E49B79800544217 /* Assets.xcassets */,
-				1C1AD0401E49B79800544217 /* LaunchScreen.storyboard */,
+				8B98F0752696F4BB00DEACA1 /* launch_.png */,
+				8B98F0712696F17900DEACA1 /* Launch Screen.storyboard */,
 				1C1AD0431E49B79800544217 /* Info.plist */,
 				1CFE73121FFE32AE0018172F /* Dai-Hentai-Bridging-Header.h */,
 				1C1AD0321E49B79800544217 /* Supporting Files */,
@@ -815,8 +818,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C1AD0421E49B79800544217 /* LaunchScreen.storyboard in Resources */,
+				8B98F0722696F17900DEACA1 /* Launch Screen.storyboard in Resources */,
 				1CEE14732056D84E005983B0 /* translator.json in Resources */,
+				8B98F0762696F4BB00DEACA1 /* launch_.png in Resources */,
 				1C1AD03F1E49B79800544217 /* Assets.xcassets in Resources */,
 				8B98F055268F270C00DEACA1 /* db.json in Resources */,
 				1C1AD03D1E49B79800544217 /* Main.storyboard in Resources */,
@@ -921,14 +925,6 @@
 				1C1AD03C1E49B79800544217 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1C1AD0401E49B79800544217 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1C1AD0411E49B79800544217 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

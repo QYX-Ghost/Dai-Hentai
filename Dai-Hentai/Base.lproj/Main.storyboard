@@ -334,7 +334,6 @@
         <!--Navigation Controller-->
         <scene sceneID="en3-rZ-TW5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yRp-io-T8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="u6v-Sh-Y1v" customClass="NavigationController" customModule="Dai_Hentai" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="YR5-UU-4Aw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IiZ-34-Z8t">
@@ -345,13 +344,13 @@
                         <segue destination="aVR-E1-pu7" kind="relationship" relationship="rootViewController" id="h6B-FT-a5q"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yRp-io-T8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-732" y="1688"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="60n-Vv-q3G">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lYs-a6-4yd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Zn6-pD-8g1" customClass="NavigationController" customModule="Dai_Hentai" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="downloads" id="yff-qe-7jA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KE0-Ug-70E">
@@ -362,6 +361,7 @@
                         <segue destination="7O4-IR-1ix" kind="relationship" relationship="rootViewController" id="KyL-Co-zQ7"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lYs-a6-4yd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-731" y="1029"/>
         </scene>
@@ -534,7 +534,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ai7-XZ-UxE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b1A-yC-jyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="nff-1U-hH1" customClass="NavigationController" customModule="Dai_Hentai" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="history" id="b0Q-ae-4aD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gvy-za-D7m">
@@ -545,13 +544,13 @@
                         <segue destination="pF1-Ho-r1p" kind="relationship" relationship="rootViewController" id="w9s-DP-1eN"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b1A-yC-jyv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-730" y="374"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZxI-d1-yNR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s9w-Bj-6oa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController hidesBottomBarWhenPushed="YES" id="3VD-JS-Duy" customClass="NavigationController" customModule="Dai_Hentai" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="2vX-UH-pKV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BfU-ZD-WIe">
@@ -562,6 +561,7 @@
                         <segue destination="bGt-cB-9tU" kind="relationship" relationship="rootViewController" id="uD9-Ea-Fzv"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s9w-Bj-6oa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-730" y="-278"/>
         </scene>
