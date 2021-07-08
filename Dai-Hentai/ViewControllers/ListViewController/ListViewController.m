@@ -96,7 +96,7 @@
                                                       SDImageCacheType cacheType,
                                                       NSURL * _Nullable imageURL) {
             if (image && DBUserPreference.info.blurCover.boolValue) {
-                UIImage *blurImage = [image yy_imageByBlurRadius:25
+                UIImage *blurImage = [image yy_imageByBlurRadius:15
                                                        tintColor:nil
                                                         tintMode:kCGBlendModeNormal
                                                       saturation:1
