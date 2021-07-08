@@ -22,9 +22,10 @@
 @property (nonatomic, strong) NSLock *pageLocker;
 @property (nonatomic, assign) BOOL isEndOfGalleries;
 @property (nonatomic, assign) BOOL isLoading;
+@property (nonatomic, assign) BOOL isNetFailure;
 
 - (void)initValues;
-- (void)showMessageTo:(MessageCell *)cell onLoading:(BOOL)isLoading;
+- (void)showMessageTo:(MessageCell *)cell;
 - (void)reloadGalleries;
 - (void)onCellBeSelectedAction:(HentaiInfo *)info;
 

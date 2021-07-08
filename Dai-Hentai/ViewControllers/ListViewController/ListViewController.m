@@ -47,12 +47,6 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (self.isLoading) {
-//        return [collectionView dequeueReusableCellWithReuseIdentifier:@"MessageCell"
-//                                                         forIndexPath:indexPath];
-//    }
-    
     if (!self.isEndOfGalleries && indexPath.row + 20 >= self.galleries.count) {
         [self fetchGalleries];
     }
@@ -105,7 +99,7 @@
             }
         }];
     } else if ([cell isKindOfClass:[MessageCell class]]) {
-        [self showMessageTo:(MessageCell *)cell onLoading:self.isLoading];
+        [self showMessageTo:(MessageCell *)cell];
     }
 }
 
@@ -139,14 +133,19 @@
     self.isLoading = YES;
 }
 
-- (void)showMessageTo:(MessageCell *)cell onLoading:(BOOL)isLoading {
-    cell.activityView.hidden = !isLoading;
-    if (isLoading) {
+- (void)showMessageTo:(MessageCell *)cell {
+    cell.activityView.hidden = !self.isLoading;
+    if (self.isLoading) {
         [cell.activityView startAnimating];
         cell.messageLabel.text = @"列表载入中...";
     } else {
         [cell.activityView stopAnimating];
-        cell.messageLabel.text = @"找不到相关作品哟";
+        
+        if (self.isNetFailure) {
+            cell.messageLabel.text = @"网络连接出错了哟";
+        } else {
+            cell.messageLabel.text = @"找不到相关作品哟";
+        }
     }
 }
 
@@ -160,6 +159,7 @@
 
 - (void)fetchGalleries {
     self.isLoading = YES;
+    self.isNetFailure = NO;
     if ([self.pageLocker tryLock]) {
         SearchInfo *info = [DBSearchSetting info];
         __weak ListViewController *weakSelf = self;
@@ -170,6 +170,9 @@
                     [strongSelf.galleries addObjectsFromArray:infos];
                     strongSelf.pageIndex++;
                     strongSelf.isEndOfGalleries = infos.count == 0;
+                } else if (status == HentaiParserStatusNetworkFail) {
+                    strongSelf.isNetFailure = YES;
+                    strongSelf.isEndOfGalleries = YES;
                 } else {
                     strongSelf.isEndOfGalleries = YES;
                 }

@@ -54,9 +54,9 @@
     }
 }
 
-- (void)showMessageTo:(MessageCell *)cell onLoading:(BOOL)isLoading {
-    [super showMessageTo:cell onLoading:isLoading];
-    if (isLoading) {
+- (void)showMessageTo:(MessageCell *)cell {
+    [super showMessageTo:cell];
+    if (self.isLoading) {
         cell.messageLabel.text = self.deletingMessage;
     } else {
         cell.messageLabel.text = @"你还没有看过任何作品哟 O3O";

@@ -47,7 +47,7 @@
     }
 }
 
-- (void)showMessageTo:(MessageCell *)cell onLoading:(BOOL)isLoading {
+- (void)showMessageTo:(MessageCell *)cell {
     cell.activityView.hidden = YES;
     cell.messageLabel.text = @"你还没有下载过任何作品哟 O3O";
 }
