@@ -12,6 +12,7 @@
 #import "SettingViewController+ScrollDirection.h"
 #import "SettingViewController+Lock.h"
 #import "SettingViewController+LoginUsingExKey.h"
+#import "SettingViewController+BlurCover.h"
 #import "Dai_Hentai-Swift.h"
 
 @implementation SettingViewController
@@ -22,14 +23,9 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell.reuseIdentifier isEqualToString:@"ScrollDirectionCell"]) {
         [self onScrollDirectionPress];
-    }
-    else if ([cell.reuseIdentifier isEqualToString:@"LockThisAppCell"]) {
-        [self onLockThisAppPress];
-    }
-    else if ([cell.reuseIdentifier isEqualToString:@"EhListCheckCell"] || [cell.reuseIdentifier isEqualToString:@"ExListCheckCell"]) {
+    } else if ([cell.reuseIdentifier isEqualToString:@"EhListCheckCell"] || [cell.reuseIdentifier isEqualToString:@"ExListCheckCell"]) {
         [self presentViewController:[self checkViewControllerBy:cell.reuseIdentifier] animated:YES completion:nil];
-    }
-    else if ([cell.reuseIdentifier isEqualToString:@"ExFailCell"]) {
+    } else if ([cell.reuseIdentifier isEqualToString:@"ExFailCell"]) {
         [ExCookie clean];
         [self displayListAndAPIStatus];
         for (UINavigationController *controller in self.tabBarController.viewControllers) {
@@ -38,11 +34,9 @@
                 [controller.topViewController performSelector:resetButtonAndParser];
             }
         }
-    }
-    else if ([cell.reuseIdentifier isEqualToString:@"ExKeyLoginCell"]) {
+    } else if ([cell.reuseIdentifier isEqualToString:@"ExKeyLoginCell"]) {
         [self onLoginUsingExKeyPress];
-    }
-    else {
+    } else {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
         return;
     }
@@ -73,7 +67,8 @@
     [self displayListAndAPIStatus];
     [self sizeCalculator];
     [self displayCurrentScrollDirectionText];
-    [self displayLockThisAppText];
+    [self displayBlurCoverSwitch];
+    [self displayLockThisAppSwitch];
 }
 
 @end

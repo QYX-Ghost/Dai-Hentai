@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSNumber *scrollDirection;
 @property (nonatomic, strong) NSNumber *isLockThisApp;
+@property (nonatomic, strong) NSNumber *blurCover;
 
 - (instancetype)initWithDictionary:(NSDictionary<NSString *, id> *)dictionary;
 

@@ -14,6 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Property
     
     var window: UIWindow?
+    lazy var effectView = { () -> UIVisualEffectView in
+        var effect = UIBlurEffect.init(style: .light)
+        var effectView = UIVisualEffectView.init(effect: effect)
+        effectView.alpha = 0
+        effectView.frame = UIScreen.main.bounds
+        return effectView
+    }()
     private var allowOnce: Bool?
     
     // MARK: - App Life Cycle
@@ -26,12 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        URLCache.shared = URLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
-        Fabric.with([ Crashlytics.self ])
+        
         return true
     }
     
+    func applicationWillResignActive(_ application: UIApplication) {
+        // 进入后台
+        self.addEffectView()
+        
+        // 如果需要上鎖, 在進入背景前將 window hidden, 避免重新開啟時會看到露出的畫面
+        if DBUserPreference.info()?.isLockThisApp.boolValue ?? false {
+            window?.isHidden = true
+        }
+    }
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
+        // 回到前台
+        self.removeEffectView()
         
         // 一次解開設定, 可以解開或是踢出去
         if let allowOnce = allowOnce {
@@ -63,14 +81,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
-        
-        // 如果需要上鎖, 在進入背景前將 window hidden, 避免重新開啟時會看到露出的畫面
-        if DBUserPreference.info()?.isLockThisApp.boolValue ?? false {
-            window?.isHidden = true
+    func addEffectView() {
+        window?.addSubview(effectView)
+        UIView.animate(withDuration: 0.5) {
+            self.effectView.alpha = 1
         }
     }
     
+    func removeEffectView() {
+//        UIView.animate(withDuration: 0.5) {
+//        }
+        UIView.animate(withDuration: 0.5) {
+            self.effectView.alpha = 0
+        } completion: { Bool in
+            self.effectView.removeFromSuperview()
+        }
+
+    }
 }
 
 extension DBUserPreference {

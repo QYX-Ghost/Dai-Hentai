@@ -46,10 +46,10 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.isLoading) {
-        return [collectionView dequeueReusableCellWithReuseIdentifier:@"MessageCell"
-                                                         forIndexPath:indexPath];
-    }
+//    if (self.isLoading) {
+//        return [collectionView dequeueReusableCellWithReuseIdentifier:@"MessageCell"
+//                                                         forIndexPath:indexPath];
+//    }
     
     if (!self.isEndOfGalleries && indexPath.row + 20 >= self.galleries.count) {
         [self fetchGalleries];
@@ -229,6 +229,25 @@
         [strongSelf performSegueWithIdentifier:@"PushToRelated" sender:info];
     } }];
     
+    [behaviors addObject:@{ @"分享作品": ^(void) {
+        if (!weakSelf) {
+            return;
+        }
+        __strong ListViewController *strongSelf = weakSelf;
+        NSMutableString *urlString = [NSMutableString string];
+        if ([ExCookie isExist]) {
+            [urlString appendFormat:@"https://exhentai.org/g/%@/%@", info.gid, info.token];
+        } else {
+            [urlString appendFormat:@"https://e-hentai.org/g/%@/%@", info.gid, info.token];
+        }
+        
+        NSString *shareInfo = [NSString stringWithFormat:@"%@\n%@", [info bestTitle], urlString];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[ shareInfo ] applicationActivities:nil];
+        [strongSelf presentViewController:activityViewController
+                                 animated:true
+                               completion:nil];
+    } }];
+    
     return behaviors;
 }
 
@@ -264,16 +283,18 @@
 - (UIColor *)categoryColor:(NSString *)category {
     static NSDictionary *colorMapping = nil;
     if (!colorMapping) {
-        colorMapping = @{ @"Doujinshi": color(255, 59, 59),
-                          @"Manga": color(255, 186, 59),
-                          @"Artist CG Sets": color(234, 220, 59),
-                          @"Game CG Sets": color(59, 157, 59),
-                          @"Western": color(164, 255, 76),
-                          @"Non-H": color(76, 180, 255),
-                          @"Image Sets": color(59, 59, 255),
-                          @"Cosplay": color(117, 59, 159),
-                          @"Asian Porn": color(243, 176, 243),
-                          @"Misc": color(212, 212, 212)};
+        colorMapping = @{
+            @"Doujinshi": color(255, 59, 59),
+            @"Manga": color(255, 186, 59),
+            @"Artist CG Sets": color(234, 220, 59),
+            @"Game CG Sets": color(59, 157, 59),
+            @"Western": color(164, 255, 76),
+            @"Non-H": color(76, 180, 255),
+            @"Image Sets": color(59, 59, 255),
+            @"Cosplay": color(117, 59, 159),
+            @"Asian Porn": color(243, 176, 243),
+            @"Misc": color(212, 212, 212)
+        };
     }
     return colorMapping[category];
 }
@@ -375,6 +396,8 @@
     if ([ExCookie isExist] && [className isEqualToString:@"ListViewController"]) {
         self.navigationItem.leftBarButtonItem = nil;
     }
+    
+    [self.collectionView.visibleCells makeObjectsPerformSelector:@selector(layoutSubviews)];
 }
 
 - (void)viewWillLayoutSubviews {

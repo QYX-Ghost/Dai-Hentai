@@ -18,6 +18,7 @@
     if (self) {
         self.scrollDirection = @(UICollectionViewScrollDirectionVertical);
         self.isLockThisApp = @(NO);
+        self.blurCover = @(NO);
     }
     return self;
 }

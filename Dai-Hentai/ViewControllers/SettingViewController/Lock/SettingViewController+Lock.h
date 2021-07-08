@@ -10,7 +10,7 @@
 
 @interface SettingViewController (Lock)
 
-- (void)onLockThisAppPress;
-- (void)displayLockThisAppText;
+- (IBAction)onLocalThisAppSwitchChanged:(id)sender;
+- (void)displayLockThisAppSwitch;
 
 @end

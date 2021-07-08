@@ -18,7 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *historySizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *downloadSizeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scrollDirectionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lockThisAppLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *blurCoverSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *lockThisAppSwitch;
 
 @property (nonatomic, strong) NSLock *sizeLock;
 @property (nonatomic, strong) NSLock *statusCheckLock;

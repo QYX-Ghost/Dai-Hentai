@@ -206,7 +206,7 @@ typedef enum {
     
     NSMutableArray<SearchItem *> *titleHints = [NSMutableArray array];
     NSArray *recentTitles = [self recentTitles];
-    for (NSInteger index = 0; index < MIN(recentTitles.count, 20); index++) {
+    for (NSInteger index = 0; index < MIN(recentTitles.count, 5); index++) {
         [titleHints addObject:[SearchItem itemWith:recentTitles[index] getter:@"hints"]];
     }
     [self.allItems addObject:titleHints];
@@ -299,8 +299,8 @@ typedef enum {
     [self setupCategories];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     @weakify(self);
     [self.languages.allKeys enumerateObjectsUsingBlock: ^(NSString *obj,
                                                           NSUInteger idx,
