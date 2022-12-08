@@ -13,23 +13,60 @@
 
 #pragma mark - Instance Method
 
-- (NSString *)query:(NSInteger)page {
+- (NSString *)query:(NSString *)gid {
     NSString *keyword = self.keyword;
     if (self.chineseOnly.boolValue) {
         keyword = [keyword stringByAppendingString:@" language:Chinese"];
-    }
-    else if (self.originalOnly.boolValue) {
+    } else if (self.originalOnly.boolValue) {
         keyword = [keyword stringByAppendingString:@" -translated -rewrite"];
     }
     
     //https://e-hentai.org/?inline_set=dm_l 列表
     //https://e-hentai.org/?inline_set=dm_t 縮圖
-    NSMutableString *query = [NSMutableString stringWithFormat:@"?page=%@&f_doujinshi=%@&f_manga=%@&f_artistcg=%@&f_gamecg=%@&f_western=%@&f_non-h=%@&f_imageset=%@&f_cosplay=%@&f_asianporn=%@&f_misc=%@&f_search=%@&f_apply=Apply+Filter&inline_set=dm_l", @(page), self.doujinshi, self.manga, self.artistcg, self.gamecg, self.western, self.non_h, self.imageset, self.cosplay, self.asianporn, self.misc, [[keyword componentsSeparatedByString:@" "] componentsJoinedByString:@"+"]];
+    NSMutableString *query = [NSMutableString stringWithFormat:@"?f_search=%@&f_apply=Apply+Filter&inline_set=dm_l", [[keyword componentsSeparatedByString:@" "] componentsJoinedByString:@"+"]];
+    
+    NSInteger cats = 1023;
+    if (self.doujinshi.boolValue) {
+        cats -= 2;
+    }
+    if (self.manga.boolValue) {
+        cats -= 4;
+    }
+    if (self.artistcg.boolValue) {
+        cats -= 8;
+    }
+    if (self.gamecg.boolValue) {
+        cats -= 16;
+    }
+    if (self.western.boolValue) {
+        cats -= 512;
+    }
+    if (self.non_h.boolValue) {
+        cats -= 256;
+    }
+    if (self.imageset.boolValue) {
+        cats -= 32;
+    }
+    if (self.cosplay.boolValue) {
+        cats -= 64;
+    }
+    if (self.asianporn.boolValue) {
+        cats -= 128;
+    }
+    if (self.misc.boolValue) {
+        cats -= 1;
+    }
+    [query appendFormat:@"&f_cats=%@", @(cats)];
     
     if ([self.rating compare:@(0)] != NSOrderedSame) {
         [query appendFormat:@"&advsearch=1&f_sname=on&f_stags=on&f_sr=on&f_srdd=%@", @(self.rating.integerValue + 1)];
     }
-    return [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    if (gid) {
+        [query appendFormat:@"&next=%@", gid];
+    }
+    
+    return [query stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 - (NSMutableArray<NSString *> *)hints {
